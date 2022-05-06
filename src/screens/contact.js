@@ -30,8 +30,8 @@ const Contact = () => {
               </SectionHeader>
               <Paragraph style={{textAlign: 'center'}}>
                 Please contact us on the details below or send us a message. You
-                are also more than welcome to visit our Morley Office for a
-                Coffee
+                are also more than welcome to visit our Morley office for a
+                coffee
               </Paragraph>
               <SliderWrap>
                 <Icon
@@ -39,7 +39,11 @@ const Contact = () => {
                   color={color.secondry}
                   size={Iconsizes.iconSize5}
                 />
-                <SliderText>
+                <SliderText onPress={() =>
+                  Linking.openURL(
+                    'https://goo.gl/maps/kCPfedeocjDVEDGz5',
+                  )
+                }>
                   Shop 4, 263 Walter Road W, Morley WA 6062.
                 </SliderText>
               </SliderWrap>

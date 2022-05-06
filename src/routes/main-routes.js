@@ -25,9 +25,10 @@ export function HomeTabs() {
       screenOptions={{
         headerShown: false,
 
-tabBarStyle: {
+
+tabBarStyle: {
           backgroundColor: `${color.white}`,
-          padding: 6,
+          padding: 4,
           paddingBottom: 3,
           borderTopLeftRadius: 20,
           borderTopRightRadius: 20,
@@ -35,7 +36,7 @@ export function HomeTabs() {
 
         tabBarLabelStyle: {
           fontSize: sizes.tabLabel,
-	  paddingBottom:20.
+	        paddingBottom:1
         },
         tabBarActiveTintColor: color.secondry,
         tabBarInactiveTintColor: color.light_gray,
@@ -65,7 +66,8 @@ export function HomeTabs() {
             <Icon
               name="book-open"
               color={focused ? color.secondry : color.light_gray}
-              size={Iconsizes.iconSize5_5}              
+
+              size={Iconsizes.iconSize5_5}              
             />
           ),
         }}
@@ -79,7 +81,8 @@ export function HomeTabs() {
             <Icon
               name="docs"
               color={focused ? color.secondry : color.light_gray}
-              size={Iconsizes.iconSize5_5}            />
+
+              size={Iconsizes.iconSize5_5}            />
           ),
         }}
       />
@@ -92,7 +95,8 @@ export function HomeTabs() {
             <Icon
               name="grid"
               color={focused ? color.secondry : color.light_gray}
-              size={Iconsizes.iconSize5_5}            />
+
+              size={Iconsizes.iconSize5_5}            />
           ),
         }}
       />
@@ -105,7 +109,8 @@ export function HomeTabs() {
             <Icon
               name="envelope-letter"
               color={focused ? color.secondry : color.light_gray}
-              size={Iconsizes.iconSize5_5}            />
+
+              size={Iconsizes.iconSize5_5}            />
           ),
         }}
       />

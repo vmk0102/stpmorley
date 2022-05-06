@@ -37,7 +37,7 @@ export const boxShadow = {
 
 //F O N T    S I Z E S
 export const sizes = {
-  tabLabel: mobileScreen ? wp('3%') : wp('2.5%'),
+  tabLabel: mobileScreen ? wp('2.8%') : wp('2.6%'),
   font14: mobileScreen ? `${wp('3.5%')}px` : `${wp('2.5%')}px`,
   font16: mobileScreen ? `${wp('4%')}px` : `${wp('2.5%')}px`,
   font17: mobileScreen ? `${wp('4.5%')}px` : `${wp('3%')}px`,

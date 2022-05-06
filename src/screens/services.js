@@ -90,7 +90,7 @@ const Services = () => {
         />
       ),
       title: 'Other Services',
-      desc: 'We also assist clients with representation to the ATO, consumer protection, and other government or legal entities; we also assist clients with debt collection and auditing as well.',
+      desc: 'We also assist clients with representation to the ATO, consumer protection, and other government or legal entities; we assist clients with debt collection and auditing as well.',
       link: null,
     },
     {
@@ -113,14 +113,15 @@ const Services = () => {
     {
       image: require('../assest/images/brand2.png'),
     },
-    {
-      image: require('../assest/images/brand3.png'),
-    },
+   
     {
       image: require('../assest/images/brand4.png'),
     },
     {
       image: require('../assest/images/brand5.png'),
+    },
+    {
+      image: require('../assest/images/brand3.png'),
     },
   ];
   const _renderBlogItem = ({item, index}) => {
@@ -148,7 +149,7 @@ const Services = () => {
     );
   };
   const _renderLogoItem = ({item, index}) => {
-    return <BrandImage source={item.image} resizeMode="contain" />;
+    return (<BrandImageWrap><BrandImage source={item.image} resizeMode="contain" /></BrandImageWrap>);
   };
   return (
     <>
@@ -175,7 +176,7 @@ const Services = () => {
                   loop={true}
                 />
               </CarouselWrapper>
-              <CarouselWrapper>
+              <CarouselWrapper >
                 <Carousel
                   data={logoData}
                   renderItem={_renderLogoItem}
@@ -216,4 +217,8 @@ const CarouselWrapper = styled.View`
 const BrandImage = styled.Image`
   width: 100%;
   height: ${hp('12%')}px;
+`;
+const BrandImageWrap = styled.View`
+  padding:${wp('5%')}px ${wp('2%')}px;
+  border-radius: 10px;
 `;

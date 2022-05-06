@@ -18,7 +18,7 @@ const Home = () => {
     },
     {
       title: '10000+',
-      desc: 'TAX RETURNS LODGED',
+      desc: 'RETURNS LODGED',
     },
     {
       title: '8+',
@@ -26,7 +26,7 @@ const Home = () => {
     },
     {
       title: '3674+',
-      desc: 'CUPS OF COFFEE',
+      desc: 'TRAINING HOURS',
     },
   ];
   const _renderHomeItem = ({item, index}) => {

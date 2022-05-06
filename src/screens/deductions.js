@@ -94,7 +94,7 @@ const Deductions = ({navigation}) => {
         },
         {
           text: 'Cancel',
-          onPress: () => console.log('Dedj nooo'),
+          onPress: () => console.log('Cancelled'),
         },
       ],
     );
@@ -189,7 +189,7 @@ const Deductions = ({navigation}) => {
                 <Paragraph key={index}>
                   {item.deduction_name}{' '}
                   <Paragraph style={{color: color.secondry}}>
-                    (Year - {item.year})
+                    (Year - {parseInt(item.year)})
                   </Paragraph>
                 </Paragraph>
               </TouchableOpacity>
