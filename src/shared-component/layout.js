@@ -7,10 +7,11 @@ import {
 import styled from 'styled-components';
 import {color} from '../configs/theme';
 
+
 const Layout = ({children, noPadding, boxlayout, first}) => {
   return (
-    <>
-      <MainWrapper
+    <SafeAreaViewWrap>
+      <ScrollView
         contentContainerStyle={{
           flexGrow: 1,
           justifyContent: 'flex-start',
@@ -21,11 +22,13 @@ const Layout = ({children, noPadding, boxlayout, first}) => {
           paddingTop: first ? wp('5.5%') : noPadding ? 0 : wp('3%'),
         }}>
         {children}
-      </MainWrapper>
-    </>
+      </ScrollView>
+    </SafeAreaViewWrap>
   );
 };
 
-const MainWrapper = styled.ScrollView``;
+const SafeAreaViewWrap = styled.SafeAreaView`
+Flex:1 0;
+`;
 
 export default Layout;

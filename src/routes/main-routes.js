@@ -14,6 +14,8 @@ import AddForm from '../screens/add-form';
 import ViewDeduction from '../screens/view-deduction';
 import HelpScreen from '../screens/help';
 
+import { SafeAreaView } from 'react-native-safe-area-context';
+
 
 // N A V I G A T O R S
 const Tab = createBottomTabNavigator();
@@ -21,6 +23,8 @@ const Stack = createNativeStackNavigator();
 
 export function HomeTabs() {
   return (
+<SafeAreaView style={{ flex: 1}}
+    forceInset={{ top: 'always', bottom:'always' }}>
     <Tab.Navigator
       screenOptions={{
         headerShown: false,
@@ -115,6 +119,7 @@ tabBarStyle: {
         }}
       />
     </Tab.Navigator>
+</SafeAreaView>
   );
 }
 export function AppStack() {
