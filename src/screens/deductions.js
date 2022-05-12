@@ -17,7 +17,6 @@ import {db} from '../../App';
 import {useIsFocused} from '@react-navigation/native';
 import AntIcon from 'react-native-vector-icons/AntDesign';
 import Share from 'react-native-share';
-import ImgToBase64 from 'react-native-image-base64';
 import {
   Image,
   Linking,
@@ -49,7 +48,7 @@ const Deductions = ({navigation}) => {
           if (res.rows.length == 0) {
             txn.executeSql('DROP TABLE IF EXISTS user_deduction', []);
             txn.executeSql(
-              'CREATE TABLE IF NOT EXISTS user_deduction(deduction_id INTEGER PRIMARY KEY AUTOINCREMENT, deduction_name VARCHAR(20), deduction_type INT(10), image_url VARCHAR(255),year VARCHAR(20))',
+              'CREATE TABLE IF NOT EXISTS user_deduction(deduction_id INTEGER PRIMARY KEY AUTOINCREMENT, deduction_name VARCHAR(20), deduction_type INT(10), image_url TEXT,year VARCHAR(20))',
               [],
             );
           }
@@ -101,14 +100,12 @@ const Deductions = ({navigation}) => {
   };
 
   const handleShare = async (image_url, name, year) => {
-    ImgToBase64.getBase64String(image_url).then(base64String => {
-      const shareOptions = {
-        url: `data:image/png;base64,${base64String}`,
-        social: Share.Social.EMAIL,
-        subject: `Deduction: ${name}(${year})`,
-      };
-      Share.shareSingle(shareOptions);
-    });
+    const shareOptions = {
+      url: image_url,
+      social: Share.Social.EMAIL,
+      subject: `Deduction: ${name}(${year})`,
+    };
+    Share.shareSingle(shareOptions);
   };
 
   const filterByYear = selectedYear => {
@@ -178,6 +175,7 @@ const Deductions = ({navigation}) => {
     return (
       <AccordionContent>
         {content.map((item, index) => {
+          console.log(item.image_url)
           return (
             <View
               key={index}

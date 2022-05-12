@@ -2,6 +2,10 @@ import React, {useState} from 'react';
 import {Image} from 'react-native';
 import AppHeader from '../shared-component/header';
 import Layout from '../shared-component/layout';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 
 const ViewDeduction = props => {
   const {image} = props.route.params;
@@ -12,7 +16,7 @@ const ViewDeduction = props => {
         <Image
           source={{uri: image}}
           resizeMode="cover"
-          style={{height: '100%', width: '100%'}}
+          style={{height: hp('80%') , width: wp('90%') ,alignSelf:'center',justifyContent:'center',flexDirection:'column',alignItems:'center'}}
         />
       </Layout>
     </>

@@ -12,7 +12,8 @@ import {AnimatableView, HeaderImage, Paragraph, SectionHeader} from './styles';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import IconF5 from 'react-native-vector-icons/FontAwesome5';
 import IonIcons from 'react-native-vector-icons/Ionicons';
-import Carousel from 'react-native-snap-carousel';import {SafeAreaView} from 'react-native';
+import Carousel from 'react-native-snap-carousel';
+import {SafeAreaView} from 'react-native';
 const About = () => {
   const blogsData = [
     {
@@ -92,7 +93,7 @@ const About = () => {
     );
   };
   return (
-    <SafeAreaView>
+    <>
       <AppHeader />
       <Layout noPadding>
         <HeaderImage
@@ -160,7 +161,7 @@ const About = () => {
           </AnimatableView>
         </Animatable.View>
       </Layout>
-    </SafeAreaView>
+    </>
   );
 };
 export default About;

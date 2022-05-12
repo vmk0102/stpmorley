@@ -21,6 +21,7 @@ import RNPickerSelect from 'react-native-picker-select';
 import {dropdownItems} from '../configs/constants';
 import {db} from '../../App';
 import CameraRoll from '@react-native-community/cameraroll';
+import ImgToBase64 from 'react-native-image-base64';
 
 const AddForm = ({navigation}) => {
   const [yearList, setYearList] = useState([]);
@@ -32,6 +33,7 @@ const AddForm = ({navigation}) => {
     file_url: '',
     file_name: '',
     year: currentYear,
+    file_base_format:'',
   });
   useEffect(() => {
     var max = currentYear;
@@ -55,12 +57,15 @@ const AddForm = ({navigation}) => {
     }).then(image => {
       const splittedArray = image.path.split('/');
       const fileName = splittedArray[splittedArray.length - 1];
-      console.log(image);
-      setFormData({
-        ...formData,
-        file_url: image.path,
-        file_name: fileName,
-      });
+      ImgToBase64.getBase64String(image.path).then(base64String => {
+        setFormData({
+          ...formData,
+          file_url: image.path,
+          file_base_format: `data:image/png;base64,${base64String}`,
+          file_name: fileName,
+        });
+      })
+     
     });
   };
 
@@ -105,7 +110,7 @@ const AddForm = ({navigation}) => {
           [
             formData.name,
             formData.deduction_type,
-            formData.file_url,
+            formData.file_base_format,
             formData.year,
           ],
           (tx, results) => {

@@ -92,7 +92,7 @@ const ThemeButton = styled.TouchableOpacity`
   background: ${color.secondry};
   align-self: center;
   padding: ${wp('3%')}px ${wp('7%')}px;
-  margin-top: ${wp('6%')}px;
+  margin: ${wp('6%')}px 0;
   border-radius: 5px;
 `;
 const BtnText = styled.Text`
