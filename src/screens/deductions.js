@@ -100,12 +100,39 @@ const Deductions = ({navigation}) => {
   };
 
   const handleShare = async (image_url, name, year) => {
-    const shareOptions = {
-      url: image_url,
-      social: Share.Social.EMAIL,
-      subject: `Deduction: ${name}(${year})`,
-    };
-    Share.shareSingle(shareOptions);
+    const url =  image_url;
+    const title = `Deduction: ${name}(${year})`;
+
+    const options = Platform.select({
+      ios: {
+        activityItemSources: [
+          {
+            // For sharing url with custom title.
+            placeholderItem: { type: 'url', content: url },
+            item: {
+              default: { type: 'url', content: url },
+            },
+            subject: {
+              default: title,
+            },
+            linkMetadata: { originalUrl: url, url, title },
+          },
+        ],
+      },
+      default: {
+        title,
+        subject: title,
+        url: url,
+      },
+    });
+    // Share.shareSingle(shareOptions);
+    Share.open(options)
+  .then((res) => {
+    console.log(res);
+  })
+  .catch((err) => {
+    err && console.log(err);
+  });
   };
 
   const filterByYear = selectedYear => {
