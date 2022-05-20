@@ -48,7 +48,7 @@ const Deductions = ({navigation}) => {
           if (res.rows.length == 0) {
             txn.executeSql('DROP TABLE IF EXISTS user_deduction', []);
             txn.executeSql(
-              'CREATE TABLE IF NOT EXISTS user_deduction(deduction_id INTEGER PRIMARY KEY AUTOINCREMENT, deduction_name VARCHAR(20), deduction_type INT(10), image_url TEXT,year VARCHAR(20))',
+              'CREATE TABLE IF NOT EXISTS user_deduction(deduction_id INTEGER PRIMARY KEY AUTOINCREMENT, deduction_name VARCHAR(20), deduction_type INT(10), image_url TEXT,year INTEGER)',
               [],
             );
           }
@@ -125,14 +125,13 @@ const Deductions = ({navigation}) => {
         url: url,
       },
     });
-    // Share.shareSingle(shareOptions);
     Share.open(options)
-  .then((res) => {
-    console.log(res);
-  })
-  .catch((err) => {
-    err && console.log(err);
-  });
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        err && console.log(err);
+      });
   };
 
   const filterByYear = selectedYear => {
@@ -401,5 +400,5 @@ const pickerSelectStyles = StyleSheet.create({
   },
 });
 const FilterBar = styled.View`
-  width: ${wp('40%')}px;
+  width: ${wp('45%')}px;
 `;

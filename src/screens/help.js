@@ -63,7 +63,7 @@ const HelpScreen = () => {
               deductions from your Personal deductions.
             </Paragraph>
           </View>
-          <SectionHeader>Delete or Email your receipt</SectionHeader>
+          <SectionHeader>Delete or Share your receipt</SectionHeader>
           <View style={{flexDirection: 'row'}}>
             <Icon
               name="angle-right"
@@ -73,7 +73,7 @@ const HelpScreen = () => {
             />
             <Paragraph>
               Click on the trash icon to delete the receipt and share icon to
-              email your receipt.
+              share your receipt.
             </Paragraph>
           </View>
         </Layout>

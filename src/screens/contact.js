@@ -54,7 +54,16 @@ const Contact = () => {
                   color={color.secondry}
                   size={Iconsizes.iconSize5}
                 />
-                <SliderText>(08) 9375 5707</SliderText>
+                <SliderText onPress={() => {
+                  if (Platform.OS === 'ios') {
+                    Linking.openURL('telprompt:0893755707')
+                  }
+                  else {
+                    Linking.openURL('tel:0893755707')
+
+                  }
+                }
+                }>(08) 9375 5707</SliderText>
               </SliderWrap>
               <SliderWrap>
                 <Icon
@@ -62,7 +71,16 @@ const Contact = () => {
                   color={color.secondry}
                   size={Iconsizes.iconSize5}
                 />
-                <SliderText>0478 149 837</SliderText>
+                <SliderText  onPress={() => {
+                  if (Platform.OS === 'ios') {
+                    Linking.openURL('telprompt:0478149837')
+                  }
+                  else {
+                    Linking.openURL('tel:0478149837')
+
+                  }
+                }
+                }>0478 149 837</SliderText>
               </SliderWrap>
               <SliderWrap>
                 <Icon
@@ -70,7 +88,9 @@ const Contact = () => {
                   color={color.secondry}
                   size={Iconsizes.iconSize5}
                 />
-                <SliderText>info@morleystptax.com.au</SliderText>
+                <SliderText onPress={() => {
+                    Linking.openURL('mailto:info@morleystptax.com.au')
+                  }}>info@morleystptax.com.au</SliderText>
               </SliderWrap>
               <ThemeButton
                 onPress={() =>
