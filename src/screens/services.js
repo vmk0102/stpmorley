@@ -221,5 +221,4 @@ const BrandImage = styled.Image`
 const BrandImageWrap = styled.View`
   padding:${wp('5%')}px ${wp('2%')}px;
   border-radius: 10px;
-  background:${color.white};
 `;
