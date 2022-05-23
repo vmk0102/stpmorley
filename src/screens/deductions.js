@@ -30,7 +30,7 @@ import RNPickerSelect from 'react-native-picker-select';
 const Deductions = ({navigation}) => {
   const [activeSections, setActiveSections] = useState([]);
   const [deductionList, setDeductionlist] = useState([]);
-  const [selected, setSelected] = useState(null);
+  const [selected, setSelected] = useState(0);
   const [years, setYears] = useState([]);
   const isFocused = useIsFocused();
   useEffect(() => {
@@ -201,7 +201,6 @@ const Deductions = ({navigation}) => {
     return (
       <AccordionContent>
         {content.map((item, index) => {
-          console.log(item.image_url)
           return (
             <View
               key={index}
