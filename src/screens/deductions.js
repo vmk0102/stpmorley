@@ -172,9 +172,10 @@ const Deductions = ({navigation}) => {
           var temp2 = [];
           for (let i = 0; i < res.rows.length; ++i)
             temp2.push({
-              label: res.rows.item(i).year,
-              value: res.rows.item(i).year,
+              label: res.rows.item(i).year.toString(),
+              value: res.rows.item(i).year.toString(),
             });
+	
           setYears(temp2);
         },
       );
