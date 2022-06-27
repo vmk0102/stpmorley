@@ -25,7 +25,7 @@ import ImgToBase64 from 'react-native-image-base64';
 
 const AddForm = ({navigation}) => {
   const [yearList, setYearList] = useState([]);
-  var currentYear = new Date().getFullYear();
+  var currentYear = new Date().getFullYear()+7;
   const [errorText, setErrorText] = useState('');
   const [formData, setFormData] = useState({
     name: '',
