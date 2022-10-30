@@ -4,11 +4,13 @@ import {
   PermissionsAndroid,
   StyleSheet,
   TouchableOpacity,
+  View,
 } from 'react-native';
 import styled from 'styled-components';
 import AppHeader from '../shared-component/header';
 import Layout from '../shared-component/layout';
 import Icon from 'react-native-vector-icons/AntDesign';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 import ImagePicker from 'react-native-image-crop-picker';
 import {
@@ -22,21 +24,27 @@ import {dropdownItems} from '../configs/constants';
 import {db} from '../../App';
 import CameraRoll from '@react-native-community/cameraroll';
 import ImgToBase64 from 'react-native-image-base64';
+import ReviewAlert from '../shared-component/reviewAlert';
+import { getReviewStatus } from '../configs/storage';
 
 const AddForm = ({navigation}) => {
   const [yearList, setYearList] = useState([]);
-  var currentYear = new Date().getFullYear()+7;
+  var currentYear = new Date().getFullYear();
   const [errorText, setErrorText] = useState('');
+  const [reviewStatus, setReviewStatus] = useState(null);
   const [formData, setFormData] = useState({
     name: '',
     deduction_type: '',
     file_url: '',
     file_name: '',
-    year: currentYear,
+    year: currentYear+7,
     file_base_format:'',
   });
+  const everyFiveDays = [...Array(10).keys()].map(i => (i + 1) * 5 );
+  console.log('get_review_status',reviewStatus)
+
   useEffect(() => {
-    var max = currentYear;
+    var max = currentYear+7;
     var min = max - 20;
     var years = [];
     for (var i = max; i >= min; i--) {
@@ -47,6 +55,13 @@ const AddForm = ({navigation}) => {
       checkImageWritePermission();
     }
   }, []);
+
+  useEffect(() => {
+    getReviewStatus().then((res)=>{
+      setReviewStatus(res);
+    })
+    
+  },[]);
 
   //SCAN IMAGE
   const handleCameraLaunch = () => {
@@ -68,6 +83,26 @@ const AddForm = ({navigation}) => {
      
     });
   };
+
+  //SELECT IMAGE FROM GALLERY
+  const selectImageFromGallery = () => {
+  ImagePicker.openPicker({
+    width: 300,
+    height: 400,
+    cropping: true
+  }).then(image => {
+    const splittedArray = image.path.split('/');
+    const fileName = splittedArray[splittedArray.length - 1];
+    ImgToBase64.getBase64String(image.path).then(base64String => {
+      setFormData({
+        ...formData,
+        file_url: image.path,
+        file_base_format: `data:image/png;base64,${base64String}`,
+        file_name: fileName,
+      });
+    })
+  });
+}
 
   //GET PERMISSION
   const checkImageWritePermission = async () => {
@@ -122,6 +157,11 @@ const AddForm = ({navigation}) => {
                   onPress: () => navigation.navigate('Deductions Record'),
                 },
               ]);
+              
+              (results.insertId === 1 || everyFiveDays.includes(results.insertId)) && reviewStatus == null ? 
+              setTimeout(() => {
+                ReviewAlert()
+              }, 5000) : null
             } else {
               console.log('Updation Failed');
             }
@@ -141,6 +181,7 @@ const AddForm = ({navigation}) => {
         />
         <AnimatableView>
           <Layout first boxlayout>
+            <View style={{flexDirection:'row'}}>
             <TouchableOpacity activeOpacity={0.9} onPress={handleCameraLaunch}>
               <DocItemCamera first>
                 <Icon
@@ -151,6 +192,17 @@ const AddForm = ({navigation}) => {
                 <ScanText> Scan</ScanText>
               </DocItemCamera>
             </TouchableOpacity>
+            <TouchableOpacity style={{marginLeft:10}} activeOpacity={0.9} onPress={selectImageFromGallery}>
+              <DocItemCamera first>
+                <MaterialIcons
+                  name="insert-photo"
+                  color={`${color.white}`}
+                  size={Iconsizes.iconSize5_5}
+                />
+                <ScanText> Select from Gallery</ScanText>
+              </DocItemCamera>
+            </TouchableOpacity>
+            </View>
             {formData.file_name !== '' && (
               <FileWrap>
                 <FileIcon name="jpgfile1" size={Iconsizes.iconSize5_5} />
@@ -207,7 +259,7 @@ const AddForm = ({navigation}) => {
                 label: 'Select Year...',
               }}
               items={yearList}
-              value={formData.year}
+              value={currentYear}
               style={{
                 ...pickerSelectStyles,
                 iconContainer: {
@@ -241,13 +293,6 @@ const AddForm = ({navigation}) => {
   );
 };
 export default AddForm;
-const ThemeButton = styled.TouchableOpacity`
-  background: ${color.secondry};
-  align-self: center;
-  padding: ${wp('3%')}px ${wp('7%')}px;
-  margin-top: ${wp('6%')}px;
-  border-radius: 5px;
-`;
 const DocItemCamera = styled.View`
   background-color: ${color.secondry};
   padding: ${wp('2%')}px ${wp('4.5%')}px;

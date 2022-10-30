@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "867300917143",
+    "project_id": "stpmorley",
+    "storage_bucket": "stpmorley.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:867300917143:android:66f0e974a15602ad4a0ed2",
+        "android_client_info": {
+          "package_name": "com.stpmorley"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "867300917143-deh1t3fo61advhhp7vqgs4ao16b1nbpg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCUHdje9JorQWqae9svG_1T0T-kj0Qv9e8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "867300917143-deh1t3fo61advhhp7vqgs4ao16b1nbpg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
