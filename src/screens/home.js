@@ -10,6 +10,7 @@ import Carousel from 'react-native-snap-carousel';
 import {AnimatableView, HeaderImage, Paragraph, SectionHeader} from './styles';
 import * as Animatable from 'react-native-animatable';
 import {color, sizes} from '../configs/theme';
+import PropTypes from 'prop-types';
 const Home = () => {
   const homeData = [
     {

@@ -11,7 +11,7 @@ import AppHeader from '../shared-component/header';
 import Layout from '../shared-component/layout';
 import Icon from 'react-native-vector-icons/AntDesign';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-
+import PropTypes from 'prop-types';
 import ImagePicker from 'react-native-image-crop-picker';
 import {
   widthPercentageToDP as wp,

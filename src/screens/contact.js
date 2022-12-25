@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import AppHeader from '../shared-component/header';
 import Layout from '../shared-component/layout';
 import Icon from 'react-native-vector-icons/SimpleLineIcons';
-
+import PropTypes from 'prop-types';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,

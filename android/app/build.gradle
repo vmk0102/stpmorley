@@ -129,13 +129,16 @@ android {
     ndkVersion rootProject.ext.ndkVersion
 
     compileSdkVersion rootProject.ext.compileSdkVersion
+       lintOptions {
+        checkReleaseBuilds false
+    }
 
     defaultConfig {
         applicationId "com.stpmorley"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 7
-        versionName "1.5"
+        versionCode 9
+        versionName "1.8"
         vectorDrawables.useSupportLibrary = true
     }
     splits {
@@ -171,6 +174,7 @@ android {
                 }
             }
         }
+        
         release {
             // Caution! In production, you need to generate your own keystore file.
             // see https://reactnative.dev/docs/signed-apk-android.
@@ -178,8 +182,11 @@ android {
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
             signingConfig signingConfigs.release
+            matchingFallbacks = ['release']
 
         }
+        
+    
     }
 
     // applicationVariants are e.g. debug, release
@@ -202,7 +209,9 @@ android {
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     //noinspection GradleDynamicVersion
-    implementation "com.facebook.react:react-native:+"  // From node_modules
+    implementation "com.facebook.react:react-native:0.67.2"  // From node_modules
+    implementation project(':react-native-vector-icons')
+
 
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
 
@@ -234,6 +243,5 @@ task copyDownloadableDepsToLibs(type: Copy) {
     from configurations.implementation
     into 'libs'
 }
-
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)
 apply plugin: 'com.google.gms.google-services'

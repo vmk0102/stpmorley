@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
 import AppHeader from '../shared-component/header';
+import PropTypes from 'prop-types';
 import Layout from '../shared-component/layout';
 import {
   widthPercentageToDP as wp,

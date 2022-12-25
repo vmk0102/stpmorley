@@ -4,6 +4,7 @@ import Layout from '../shared-component/layout';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {color, Iconsizes, sizes} from '../configs/theme';
 import {Paragraph, SectionHeader} from './styles';
+import PropTypes from 'prop-types';
 import {View} from 'react-native';
 const HelpScreen = () => {
   return (

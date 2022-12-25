@@ -13,6 +13,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import IconF5 from 'react-native-vector-icons/FontAwesome5';
 import IonIcons from 'react-native-vector-icons/Ionicons';
 import Carousel from 'react-native-snap-carousel';
+import PropTypes from 'prop-types';
 import {SafeAreaView} from 'react-native';
 const About = () => {
   const blogsData = [

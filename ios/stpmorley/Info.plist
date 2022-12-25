@@ -38,7 +38,7 @@
 	<key>NSCameraUsageDescription</key>
 	<string>The app uses camera so that the user can take a screenshot of his receipt and save it for his own record. The user can then also email the receipt to anyone he wants</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string/>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>STP Morley app requires camera access to scan photo.</string>
 	<key>UIAppFonts</key>

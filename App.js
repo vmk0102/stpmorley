@@ -6,7 +6,7 @@ import SplashScreen from 'react-native-splash-screen';
 import {openDatabase} from 'react-native-sqlite-storage';
 import PushNotification from "react-native-push-notification";
 import Firebase from '@react-native-firebase/app';
-
+import PropTypes from 'prop-types'
 export const db = openDatabase({name: 'DeductionDatabase.db'});
 const App = () => {
   useEffect(() => {

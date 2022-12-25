@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {Image} from 'react-native';
 import AppHeader from '../shared-component/header';
 import Layout from '../shared-component/layout';
+import PropTypes from 'prop-types';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
